@@ -53,19 +53,3 @@ while True: # loop the code
     if download_more == False:
         break
 
-print ("shutting down :)")
-sleep(4)
-print("just hold your horses")
-sleep(3)
-print("aaanyyyy minute now....")
-sleep(3)
-print("shutting down.. frl")
-sleep(1)
-print("dont close the window or your pc will EXPLODE")
-sleep(20)
-print("I was joking, you can close the app idc")
-sleep(2)
-print("dont do it tho, the pc will explode")
-sleep(10)
-print(":)")
-sleep(3)
