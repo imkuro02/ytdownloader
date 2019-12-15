@@ -4,6 +4,25 @@ from download import *
 from time import sleep
 from pathlib import Path
 
+path = Path().absolute() # folder path
+path_songs = "{}\songs".format(path)
+
+def setup(folders):
+
+    for folder in folders:
+        dir = "{}\\{}".format(path, folder)
+        dir_exists = os.path.isdir(dir)
+        exists = None
+        if dir_exists :
+            exists = "exists"
+        else:
+            exists = "does not exist yet, making directory"
+
+        print("directory {}".format(folder), exists)
+        if not dir_exists :
+            os.mkdir(dir)
+
+setup(["videos","songs"]) #folders to setup
 
 def yes_no(answer):
     if answer == "y" : return True
@@ -11,8 +30,7 @@ def yes_no(answer):
 
 while True: # loop the code
 #path_file =  Path(__file__).absolute() #file path
-    path = Path().absolute() # folder path
-    path_songs = "{}\songs".format(path)
+
 
     age_restriction = False
     link = input("link to video: ")
@@ -28,7 +46,7 @@ while True: # loop the code
     #downloading file
     print("downloading: ", link)
     file = download(link,image,path)
-    print(file, "  finished Downloading")
+    print(file, " finished Downloading")
 
 
     if not image:
@@ -52,4 +70,3 @@ while True: # loop the code
 
     if download_more == False:
         break
-

@@ -15,7 +15,7 @@ def convert(video_name): #name and extension
         audio_name = get_name(video_name)  # get name without extension
         #audio_name = "{}{}".format(path,audio_name)
         audio_name = "{}.mp3".format(audio_name)
-        clip.write_audiofile(audio_name) #write out as mp3
+        clip.write_audiofile(audio_name, verbose=False, logger=None) #write out as mp3
         #print("done")
         return(audio_name)
     except: #-----------------------------------------------------------------------------------USELESS
