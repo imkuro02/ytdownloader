@@ -1,0 +1,4 @@
+pip install pytube
+pip install pytube3
+
+idk it works
