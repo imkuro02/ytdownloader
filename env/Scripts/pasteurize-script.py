@@ -1,4 +1,4 @@
-#!c:\users\ignacy\documents\py\ytdownload\env\scripts\python.exe
+#!c:\users\imkuro02\documents\code\projects\ytdownloader\env\scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'future==0.18.2','console_scripts','pasteurize'
 __requires__ = 'future==0.18.2'
 import re

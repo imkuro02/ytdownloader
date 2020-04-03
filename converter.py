@@ -1,7 +1,7 @@
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.audio.io.AudioFileClip import AudioFileClip
 import os.path
-from pydub import AudioSegment
+#from pydub import AudioSegment
 import subprocess
 
 def get_name(video_name):
