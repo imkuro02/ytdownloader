@@ -157,6 +157,7 @@ c create temp list
     os.system('cls')
 
 def play_list():
+    songs = os.listdir("./songs")
     print(
 '''r return
 type name of playlist
