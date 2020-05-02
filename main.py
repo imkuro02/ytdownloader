@@ -4,6 +4,7 @@ from download import *
 import music_player as player
 from time import sleep
 from pathlib import Path
+import commander
 
 path = Path().absolute() # folder path
 path_songs = "{}\songs".format(path)
@@ -23,7 +24,7 @@ def setup(folders):
         if not dir_exists :
             os.mkdir(dir)
 
-setup(["videos","songs"]) #folders to setup
+setup(['videos','songs','lists']) #folders to setup
 
 def yes_no(answer):
     if answer == "y" : return True
@@ -31,7 +32,7 @@ def yes_no(answer):
 
 
 def play():
-    player.show_list()
+    player.main() # goes to main of player script
     return
 
 def download_file():
@@ -43,8 +44,10 @@ def download_file():
 
     image = None
     while True:
-        image = yes_no(input("download image (y/n) : "))
-        if image == True or image == False:
+        image = input('download image (y/n): ')
+        image = commander.command(image)
+        #image = yes_no(input("download image (y/n) : "))
+        if image == 'y' or image == 'n':
             break
 
     #downloading file
@@ -53,53 +56,39 @@ def download_file():
     print(file, " finished Downloading")
 
 
-    if not image:
-        #convert file
+    if image == 'n': # if asked to download without image -> convert file
         converted_file = cr.convert(file)
         os.rename("{}\\{}".format(path,converted_file),"{}{}{}".format(path,"\\songs\\",converted_file))
-        #file converted
-
-        #remove file
-        sleep(1)
+        #sleep(1)
         os.remove(file)
     else:
         os.rename("{}\\{}".format(path, file), "{}{}{}".format(path, "\\videos\\", file))
-
-    print("process finished")
-
-    '''
-    download_more = None
-    while True:
-        download_more = yes_no(input("download more (y/n) : "))
-        if download_more == True or download_more == False:
-            break
         
-    if download_more == False:
-            break
-    '''
-
     return
 
 
 while True: # loop the code
+    os.system('cls')
     #os.system('cls')
 #path_file =  Path(__file__).absolute() #file path
     print(
+'''r return
+d download  
+p play 
 '''
-1 download  
-2 play 
-'''
-)
-    try:
-        command = int(input('command:'))
-        if command == 0:
-            quit()
-        if command == 1:
-            download_file()
-        if command == 2:
-            play()
-    except Exception as e:
-        print(e)
+    )
+    command = input('command: ')
+    command = commander.command(command)
+
+    if command == 'r':
+        os.system('cls')
+        quit()
+
+    if command == 'd':
+        download_file()
+    if command == 'p':
+        play()
+  
 
 
     

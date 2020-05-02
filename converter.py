@@ -3,6 +3,7 @@ from moviepy.audio.io.AudioFileClip import AudioFileClip
 import os.path
 #from pydub import AudioSegment
 import subprocess
+import os
 
 def get_name(video_name):
     name = os.path.splitext(video_name)[0]  # print 0 so first
@@ -25,8 +26,12 @@ def convert(video_name): #name and extension
         subprocess.call(['ffmpeg', '-i', audio_name,
             final_audio_name])
 
-        print('final : ',final_audio_name)
+        os.system('cls') # clear long ffmpeg msg
 
+        print(final_audio_name, ' finished converting.')
+        skip = input('[Enter]')
+
+        os.remove(audio_name) # remove mp3 file
         return(final_audio_name)
     except Exception as e: #-----------------------------------------------------------------------------------USELESS
         print(e)
